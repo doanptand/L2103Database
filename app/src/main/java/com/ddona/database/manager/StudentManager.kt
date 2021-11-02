@@ -42,7 +42,7 @@ class StudentManager(context: Context) {
                 val id = cursor.getInt(idIndex)
                 val name = cursor.getString(nameIndex)
                 val className = cursor.getString(classNameIndex)
-                students.add(Student(id, name, className))
+                students.add(Student(id.toString(), name, className))
             } while (cursor.moveToNext())
         }
         return students
@@ -61,7 +61,7 @@ class StudentManager(context: Context) {
                 val id = cursor.getInt(idIndex)
                 val name = cursor.getString(nameIndex)
                 val className = cursor.getString(classNameIndex)
-                students.add(Student(id, name, className))
+                students.add(Student(id.toString(), name, className))
             } while (cursor.moveToNext())
         }
         return students
@@ -85,11 +85,11 @@ class StudentManager(context: Context) {
         )
     }
 
-    fun deleteStudentById(id: Int) {
+    fun deleteStudentById(id: String) {
         db.delete(
             StudentDbHelper.TABLE_NAME,
             "${StudentDbHelper.COL_ID}=?",
-            arrayOf("$id")
+            arrayOf(id)
         )
     }
 
@@ -109,7 +109,7 @@ class StudentManager(context: Context) {
                 val id = cursor.getInt(idIndex)
                 val name = cursor.getString(nameIndex)
                 val className = cursor.getString(classNameIndex)
-                students.add(Student(id, name, className))
+                students.add(Student(id.toString(), name, className))
             } while (cursor.moveToNext())
         }
         return students
